@@ -9,6 +9,7 @@
     <version>1.0.0.RELEASE</version>
     <packaging>pom</packaging>
     <name>MinBox Build</name>
+    <url>https://github.com/minbox-projects/minbox-build</url>
     <properties>
         <java.version>1.8</java.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
