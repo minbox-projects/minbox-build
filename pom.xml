@@ -6,7 +6,7 @@
 
     <groupId>org.minbox.framework</groupId>
     <artifactId>minbox-build</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>MinBox Build</name>
     <url>https://github.com/minbox-projects/minbox-build</url>
