@@ -16,6 +16,7 @@
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
         <maven.javadoc.plugin.version>2.10.4</maven.javadoc.plugin.version>
+        <flatten-maven-plugin.version>1.2.3</flatten-maven-plugin.version>
     </properties>
     <description>
         Modules to centralize common resources and configuration for "minbox components" Maven builds.
@@ -103,6 +104,31 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${flatten-maven-plugin.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
                         </goals>
                     </execution>
                 </executions>
