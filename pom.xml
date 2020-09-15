@@ -43,27 +43,40 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
+
+    <profiles>
+        <!--配置快照版本发布到私有仓库-->
+        <profile>
+            <id>publish-snapshot-private-central</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>yuqiyu-snapshots</id>
+                    <url>http://maven.yuqiyu.com/repository/maven-snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+        <!--配置快照版本发布到Maven仓库-->
+        <profile>
+            <id>publish-snapshot-maven-central</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>hengyu</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <!--正式版本发布到Maven Central-->
     <distributionManagement>
-        <snapshotRepository>
-            <id>hengyu</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
             <id>hengyu</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
     <repositories>
-        <repository>
-            <id>aliyun-spring</id>
-            <url>https://maven.aliyun.com/repository/spring</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+        <!--配置拉取Maven仓库正式版依赖-->
         <repository>
             <id>aliyun-central</id>
             <url>https://maven.aliyun.com/repository/central</url>
@@ -73,6 +86,17 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        <!--配置拉取私有仓库快照依赖-->
+        <repository>
+            <id>yuqiyu-snapshots</id>
+            <url>http://maven.yuqiyu.com/repository/maven-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
         </repository>
     </repositories>
     <build>
